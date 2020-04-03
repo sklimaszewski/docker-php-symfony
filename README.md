@@ -5,8 +5,8 @@ Alpine image based on PHP 7.3 FPM.
 Included libraries:
 - php-redis
 - php-imagick
-- php-mongodb
+- php-mysql
 - composer
 - nodejs, npm, yarn
 - wkhtmltopdf
-- mongodb tools
+- mysql tools
