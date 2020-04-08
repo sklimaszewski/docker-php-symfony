@@ -8,6 +8,7 @@ RUN apk update && \
         imagemagick-dev imagemagick jpegoptim libjpeg-turbo-dev \
         nodejs-npm yarn \
         wkhtmltopdf \
+        wkhtmltopdf libgcc libstdc++ libx11 glib libxrender libxext libintl ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family \
         mongodb-tools
 
 ## Install php extensions
