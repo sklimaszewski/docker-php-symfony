@@ -1,15 +1,22 @@
 FROM php:7.3.14-fpm-alpine
 
-## Install system dependencies, imagemagick, yarn, wkhtmltopdf and mongodb tools
+## Install system dependencies, imagemagick, yarn, mongodb tools
 RUN apk update && \
     apk add --no-cache --virtual dev-deps autoconf gcc g++ make && \
     apk add --no-cache git rsync bash bash-completion nano curl unzip \
         openssl-dev zlib-dev libzip-dev libxslt-dev icu-dev freetype-dev libpng-dev libxpm-dev  \
         imagemagick-dev imagemagick jpegoptim libjpeg-turbo-dev \
         nodejs-npm yarn \
-        wkhtmltopdf \
-        wkhtmltopdf libgcc libstdc++ libx11 glib libxrender libxext libintl ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family \
         mongodb-tools
+
+## Install wkhtmltopdf
+RUN apk add --no-cache \
+        wkhtmltopdf \
+        libstdc++ libx11 libxrender libxext libssl1.1 ca-certificates \
+        fontconfig freetype ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family && \
+        apk add --no-cache --virtual build-deps msttcorefonts-installer && \
+        update-ms-fonts && fc-cache -f && rm -rf /tmp/* && \
+        apk del build-deps
 
 ## Install php extensions
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/ --with-xpm-dir=/usr/include/ --enable-gd-jis-conv && \
