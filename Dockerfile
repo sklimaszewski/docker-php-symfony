@@ -9,15 +9,6 @@ RUN apk update && \
         nodejs-npm yarn \
         mongodb-tools
 
-## Install wkhtmltopdf
-RUN apk add --no-cache \
-        wkhtmltopdf \
-        libstdc++ libx11 libxrender libxext libssl1.1 ca-certificates \
-        fontconfig freetype ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family && \
-        apk add --no-cache --virtual build-deps msttcorefonts-installer && \
-        update-ms-fonts && fc-cache -f && rm -rf /tmp/* && \
-        apk del build-deps
-
 ## Install php extensions
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/ --with-xpm-dir=/usr/include/ --enable-gd-jis-conv && \
     echo "autodetect" | pecl install imagick && \

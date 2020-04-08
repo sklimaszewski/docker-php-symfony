@@ -8,5 +8,4 @@ Included libraries:
 - php-mongodb
 - composer
 - nodejs, npm, yarn
-- wkhtmltopdf
 - mongodb tools
