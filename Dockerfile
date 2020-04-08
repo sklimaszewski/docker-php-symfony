@@ -7,7 +7,7 @@ RUN apk update && \
         openssl-dev zlib-dev libzip-dev libxslt-dev icu-dev freetype-dev libpng-dev libxpm-dev  \
         imagemagick-dev imagemagick jpegoptim libjpeg-turbo-dev \
         nodejs-npm yarn \
-        wkhtmltopdf \
+        libgcc libstdc++ libx11 glib libxrender libxext libintl ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family wkhtmltopdf \
         mysql-client
 
 ## Install php extensions
