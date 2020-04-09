@@ -1,13 +1,12 @@
 FROM php:7.3-fpm-alpine
 
-## Install system dependencies, imagemagick, yarn, wkhtmltopdf and mysql tools
+## Install system dependencies, imagemagick, yarn and mysql tools
 RUN apk update && \
     apk add --no-cache --virtual dev-deps autoconf gcc g++ make && \
     apk add --no-cache git rsync bash bash-completion nano curl unzip \
         openssl-dev zlib-dev libzip-dev libxslt-dev icu-dev freetype-dev libpng-dev libxpm-dev  \
         imagemagick-dev imagemagick jpegoptim libjpeg-turbo-dev \
         nodejs-npm yarn \
-        wkhtmltopdf libgcc libstdc++ libx11 glib libxrender libxext libintl ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family \
         mysql-client
 
 ## Install php extensions

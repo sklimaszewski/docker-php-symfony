@@ -8,5 +8,4 @@ Included libraries:
 - php-mysql
 - composer
 - nodejs, npm, yarn
-- wkhtmltopdf
 - mysql tools
