@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-alpine
+FROM php:7.4-fpm-alpine
 
 ## Install extra system dependencies
 RUN apk update && \
@@ -9,7 +9,7 @@ RUN apk update && \
         nodejs yarn \
         mongodb-tools && \
     apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv && \
-    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/ --with-xpm-dir=/usr/include/ --enable-gd-jis-conv && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg --with-xpm && \
     echo "autodetect" | pecl install imagick && \
     echo "no" | pecl install mongodb-1.6.1 && \
     echo "no" | pecl install redis && \

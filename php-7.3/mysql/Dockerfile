@@ -4,7 +4,7 @@ FROM php:7.3-fpm-alpine
 RUN apk update && \
     apk add --no-cache --virtual dev-deps autoconf gcc g++ make && \
     apk add --no-cache git rsync bash bash-completion nano curl unzip openssl-dev \
-        libzip-dev libxslt-dev icu-dev freetype-dev libpng-dev libxpm-dev libjpeg-turbo-dev \
+        libzip-dev libxslt-dev icu-dev freetype-dev libpng-dev libxpm-dev libjpeg-turbo-dev libgomp \
         imagemagick-dev imagemagick jpegoptim \
         nodejs yarn \
         mysql-client && \

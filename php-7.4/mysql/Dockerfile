@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-alpine
+FROM php:7.4-fpm-alpine
 
 ## Install extra system dependencies
 RUN apk update && \
@@ -7,14 +7,15 @@ RUN apk update && \
         libzip-dev libxslt-dev icu-dev freetype-dev libpng-dev libxpm-dev libjpeg-turbo-dev libgomp \
         imagemagick-dev imagemagick jpegoptim \
         nodejs yarn \
-        mongodb-tools && \
+        mysql-client && \
     apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv && \
-    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-png-dir=/usr/include/ --with-xpm-dir=/usr/include/ --enable-gd-jis-conv && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg --with-xpm && \
+    docker-php-ext-configure mysqli --with-mysqli=mysqlnd && \
+    docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd && \
     echo "autodetect" | pecl install imagick && \
-    echo "no" | pecl install mongodb-1.6.1 && \
     echo "no" | pecl install redis && \
-    docker-php-ext-enable opcache imagick redis mongodb && \
-    docker-php-ext-install iconv exif gd pcntl intl xsl xml json zip && \
+    docker-php-ext-enable opcache imagick redis && \
+    docker-php-ext-install mysqli pdo_mysql iconv exif gd pcntl intl xsl xml json zip && \
     apk del --no-cache dev-deps && \
     rm -rf /var/cache/apk/* && rm -rf /tmp/*
 
