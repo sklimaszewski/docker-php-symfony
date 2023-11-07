@@ -1,3 +1,7 @@
+# Deprecated
+
+Docker build files moved [to a new repository](https://github.com/sklimaszewski/docker-images).
+
 # Docker Alpine image for PHP FPM and CLI for Symfony
 
 Alpine image based on php-fpm.
